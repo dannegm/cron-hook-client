@@ -1,28 +1,36 @@
-import cronHookApi from "@/services/cronHookApi";
+import { Suspense } from 'react';
+import { redirect } from 'next/navigation';
 
-import MainContainer from "@/components/main-container";
-import MainHeader from "@/components/main-header";
-import CronDetails from "@/components/cron-details";
-import LogItem from "@/components/log-item";
+import cronHookApi from '@/services/cronHookApi';
 
-export const dynamic = "force-dynamic";
+import MainContainer from '@/components/main-container';
+import MainHeader from '@/components/main-header';
+import CronDetails from '@/components/cron-details';
+import LogItem from '@/components/log-item';
 
-export default async function Cron({ params: { id }, searchParams }) {
-    const debug = searchParams?.debug !== undefined;
+export const dynamic = 'force-dynamic';
 
-    const { data: cronsData } = await cronHookApi.get(`/crons/${id}`);
+async function Logs({ id }) {
     const { data: logsData } = await cronHookApi.get(`/crons/${id}/logs`);
-
     const logsList = logsData?.data || [];
+    return logsList.map(log => <LogItem key={log.id} log={log} />);
+}
 
-    return (
-        <MainContainer>
-            <MainHeader />
-            <CronDetails cron={cronsData.data} />
+export default async function Cron({ params: { id } }) {
+    try {
+        const { data: cronsData } = await cronHookApi.get(`/crons/${id}`);
 
-            {logsList.map(log => (
-                <LogItem key={log.id} log={log} />
-            ))}
-        </MainContainer>
-    );
+        return (
+            <MainContainer>
+                <MainHeader />
+                <CronDetails cron={cronsData.data} />
+
+                <Suspense>
+                    <Logs id={id} />
+                </Suspense>
+            </MainContainer>
+        );
+    } catch (err) {
+        return redirect('/404');
+    }
 }

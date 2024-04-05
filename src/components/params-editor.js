@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
-import { TextField, Table, IconButton, Button } from "@radix-ui/themes";
-import { PlusIcon, TrashIcon } from "@radix-ui/react-icons";
+import { useEffect, useState } from 'react';
+import { TextField, Table, IconButton, Button } from '@radix-ui/themes';
+import { PlusIcon, TrashIcon } from '@radix-ui/react-icons';
 
 const Fields = {
     ID: 0,
@@ -12,38 +12,38 @@ const Fields = {
 const isEmpty = ([, key, value]) => !key && !value;
 
 export default function ParamsEditor({ params, onChange }) {
-    const [rows, setRows] = useState([[0, "", ""]]);
+    const [rows, setRows] = useState([[0, '', '']]);
 
     const handleAddRow = () => {
         const copy = [...rows];
 
         if (copy.at(-1) && !isEmpty(copy.at(-1))) {
-            copy.push([copy.length, "", ""]);
+            copy.push([copy.length, '', '']);
             setRows(copy);
         }
 
         if (!copy.length) {
-            copy.push([copy.length, "", ""]);
+            copy.push([copy.length, '', '']);
             setRows(copy);
         }
     };
 
     const handleFieldChange = (id, field) => {
-        return (ev) => {
+        return ev => {
             const copy = [...rows];
             copy[id][field] = ev.target.value;
             setRows(copy);
         };
     };
 
-    const handleRemove = (id) => {
+    const handleRemove = id => {
         return () => {
             const copy = [...rows];
 
-            const filtered = copy.filter((row) => row[Fields.ID] !== id);
+            const filtered = copy.filter(row => row[Fields.ID] !== id);
 
             if (!filtered.length) {
-                filtered.push([copy.length, "", ""]);
+                filtered.push([copy.length, '', '']);
             }
 
             setRows(filtered);
@@ -60,16 +60,14 @@ export default function ParamsEditor({ params, onChange }) {
     }, []);
 
     useEffect(() => {
-        const rowsEntries = rows
-            .filter((row) => !isEmpty(row))
-            .map(([, key, value]) => [key, value]);
+        const rowsEntries = rows.filter(row => !isEmpty(row)).map(([, key, value]) => [key, value]);
         const params = Object.fromEntries(rowsEntries);
         onChange?.(params);
     }, [JSON.stringify(rows)]);
 
     return (
-        <div className="flex flex-col gap-4">
-            <Table.Root variant="surface">
+        <div className='flex flex-col gap-4'>
+            <Table.Root variant='surface'>
                 <Table.Header>
                     <Table.Row>
                         <Table.ColumnHeaderCell>Key</Table.ColumnHeaderCell>
@@ -93,16 +91,16 @@ export default function ParamsEditor({ params, onChange }) {
                                     onChange={handleFieldChange(id, Fields.Value)}
                                 />
                             </Table.Cell>
-                            <Table.Cell justify="end">
-                                <IconButton variant="outline" onClick={handleRemove(id)}>
-                                    <TrashIcon width="15" height="15" />
+                            <Table.Cell justify='end'>
+                                <IconButton variant='outline' onClick={handleRemove(id)}>
+                                    <TrashIcon width='15' height='15' />
                                 </IconButton>
                             </Table.Cell>
                         </Table.Row>
                     ))}
                 </Table.Body>
             </Table.Root>
-            <Button variant="surface" onClick={handleAddRow}>
+            <Button variant='surface' onClick={handleAddRow}>
                 <PlusIcon />
                 Add new row
             </Button>

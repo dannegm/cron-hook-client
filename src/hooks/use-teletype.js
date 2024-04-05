@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default function useTeletype({
     texts = [],
@@ -8,10 +8,10 @@ export default function useTeletype({
     pauseTime = 1000,
 }) {
     const [index, setIndex] = useState(0);
-    const [output, setOutput] = useState("");
+    const [output, setOutput] = useState('');
 
     useEffect(() => {
-        let place = "";
+        let place = '';
         const typingInterval = setInterval(() => {
             if (place.length < texts[index].length) {
                 place += texts[index][place.length];

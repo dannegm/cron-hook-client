@@ -1,12 +1,12 @@
-import { Rubik } from "next/font/google";
-import { cn } from "@/helpers/utils";
-import Fire from "@/icons/fire";
+import { Rubik } from 'next/font/google';
+import { cn } from '@/helpers/utils';
+import Fire from '@/icons/fire';
 
 const barlow = Rubik({
-    subsets: ["latin"],
-    display: "swap",
-    weight: "900",
-    style: "italic",
+    subsets: ['latin'],
+    display: 'swap',
+    weight: '900',
+    style: 'italic',
 });
 
 export default function Logo({ className }) {
@@ -14,13 +14,13 @@ export default function Logo({ className }) {
         <h1
             className={cn(
                 barlow.className,
-                "flex flex-row text-3xl uppercase antialiased tracking-tight text-white",
+                'flex flex-row text-3xl uppercase antialiased tracking-tight text-white',
                 className,
             )}
         >
             <Fire />
             <span>CRON</span>
-            <span className="text-red-500">HOOK</span>
+            <span className='text-red-500'>HOOK</span>
         </h1>
     );
 }

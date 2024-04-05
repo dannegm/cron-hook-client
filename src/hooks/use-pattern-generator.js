@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import useChatGpt from "./use-chat-gpt";
+import { useEffect, useState } from 'react';
+import useChatGpt from './use-chat-gpt';
 
-const DEFAULT_PATTERN = "0 */12 * * *";
+const DEFAULT_PATTERN = '0 */12 * * *';
 
 const PROMPT = `You are an API that will ALWAYS respond to me in JSON format.
 I will give you a time description and you will always respond to me in CRON format to convert tasks.

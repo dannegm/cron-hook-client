@@ -1,5 +1,5 @@
-import { useState } from "react";
-import chatGpetApi from "@/services/chatGptApi";
+import { useState } from 'react';
+import chatGpetApi from '@/services/chatGptApi';
 
 export default function useChatGpt({ prompt }) {
     const [response, setResponse] = useState(null);
@@ -9,15 +9,15 @@ export default function useChatGpt({ prompt }) {
     const sendMessage = async ({ message }) => {
         setThinking(true);
         try {
-            const resp = await chatGpetApi.post("/chat/completions", {
-                model: "gpt-3.5-turbo",
+            const resp = await chatGpetApi.post('/chat/completions', {
+                model: 'gpt-3.5-turbo',
                 messages: [
                     {
-                        role: "system",
+                        role: 'system',
                         content: prompt,
                     },
                     {
-                        role: "user",
+                        role: 'user',
                         content: message,
                     },
                 ],

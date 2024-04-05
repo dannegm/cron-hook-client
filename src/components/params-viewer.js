@@ -1,7 +1,7 @@
-"use client";
-import { TextField, Table, Callout } from "@radix-ui/themes";
+'use client';
+import { TextField, Table, Callout } from '@radix-ui/themes';
 
-import { InfoCircledIcon } from "@radix-ui/react-icons";
+import { InfoCircledIcon } from '@radix-ui/react-icons';
 
 export default function ParamsViewer({ params }) {
     if (!params || !Object.keys(params).length) {
@@ -19,7 +19,7 @@ export default function ParamsViewer({ params }) {
     const paramsRows = paramsEntries.map(([key, value], id) => [id, key, value]);
 
     return (
-        <Table.Root variant="surface">
+        <Table.Root variant='surface'>
             <Table.Header>
                 <Table.Row>
                     <Table.ColumnHeaderCell>Key</Table.ColumnHeaderCell>
