@@ -11,6 +11,9 @@ const options = {
 };
 
 const prettyCode = (code) => {
+    if (code === null) {
+        return "";
+    }
     const parsed = JSON.parse(code);
     return JSON.stringify(parsed, null, 4);
 };
