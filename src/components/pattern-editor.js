@@ -13,19 +13,37 @@ export default function PatternEditor({ onChange }) {
 
     const placeholder = useTeletype({
         texts: [
-            // ...
-            'Cada tres días a las 6pm',
-            'Lunes, martes y viernes a las 10:30 am',
-            'Un día sí y un día no',
-            'Cada 3 horas',
-            'Cada 3 meses los días 15',
+            'Ogni tre giorni alle 18:00',
+            'Les jours pairs à 8 heures du matin',
+            'Jede zweite Woche freitags um 9 Uhr morgens',
+            'A cada hora às 45 minutos',
+            'Saturdays at 10:30pm',
+            'El día de Navidad a medianoche',
+            'A cada 15 minutos',
+            'Ogni ora alle 45 minuti',
+            'Jedes Jahr am 29. Februar um 6 Uhr morgens',
+            'Les jours ouvrables à 7h30 du matin',
+            'Every three days at 6pm',
+            'Ogni 4 ore e 30 minuti',
+            'O último dia de cada mês às 23:59',
+            'Los días laborables a las 7:30am',
+            'Every two weeks on Fridays at 9am',
+            'Chaque mois le 20 à 12 heures',
+            'Ogni due settimane il venerdì alle 9:00',
+            'Alle 15 Minuten',
+            'Toutes les 15 minutes',
+            'I giorni lavorativi alle 7:30',
+            'A cada três dias às 18:00',
+            'Cada 15 minutos',
         ],
     });
     const [message, setMessage] = useState('');
 
     const handleFetchPattern = ev => {
-        ev.preventDefault();
-        fetchPattern({ message });
+        if (message !== '') {
+            ev.preventDefault();
+            fetchPattern({ message });
+        }
     };
 
     const handleChange = ev => {
@@ -59,7 +77,7 @@ export default function PatternEditor({ onChange }) {
                         <ClockIcon height='16' width='16' />
                     </TextField.Slot>
                     <TextField.Slot>
-                        <IconButton size='1' onClick={handleFetchPattern}>
+                        <IconButton size='1' disabled={message === ''} onClick={handleFetchPattern}>
                             <LightningBoltIcon height='14' width='14' />
                         </IconButton>
                     </TextField.Slot>
