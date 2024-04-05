@@ -27,7 +27,7 @@ export default function CronEditor() {
         <Card>
             <div className="flex flex-col gap-4 p-2">
                 <PatternEditor onChange={(val) => setPattern(val)} />
-                {!pattern?.pattern && (
+                {pattern?.pattern && (
                     <>
                         <Separator orientation="horizontal" size="4" />
                         <Text>

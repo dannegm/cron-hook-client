@@ -11,7 +11,7 @@ import ParamsEditor from './params-editor';
 import CodeEditor from './code-editor';
 
 export default function RequestEditor({ onChange }) {
-    const [advancedMode, setAdvancedMode] = useState(true);
+    const [advancedMode, setAdvancedMode] = useState(false);
     const [method, setMethod] = useState('GET');
     const [endpoint, setEndpoint] = useState('');
     const [params, setParams] = useState({});
