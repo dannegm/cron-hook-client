@@ -10,7 +10,7 @@ export default function ParamsViewer({ params }) {
                 <Callout.Icon>
                     <InfoCircledIcon />
                 </Callout.Icon>
-                <Callout.Text>No information provided</Callout.Text>
+                <Callout.Text>Not information provided</Callout.Text>
             </Callout.Root>
         );
     }

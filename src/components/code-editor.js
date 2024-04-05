@@ -4,6 +4,7 @@ import Editor from '@monaco-editor/react';
 
 const options = {
     contextmenu: false,
+    fontSize: 14,
     minimap: {
         enabled: false,
     },

@@ -5,15 +5,28 @@ import Editor from '@monaco-editor/react';
 const options = {
     readOnly: true,
     contextmenu: false,
+    fontSize: 14,
     minimap: {
         enabled: false,
     },
 };
 
-const prettyCode = code => {
-    if (code === null) {
-        return '';
+const isValidJson = str => {
+    if (typeof str !== 'string') return false;
+
+    try {
+        const json = JSON.parse(str);
+        return typeof json === 'object' && json !== null;
+    } catch (error) {
+        return false;
     }
+};
+
+const prettyCode = code => {
+    if (code === null || !isValidJson(code)) {
+        return '// Not content provided';
+    }
+
     const parsed = JSON.parse(code);
     return JSON.stringify(parsed, null, 4);
 };
