@@ -24,9 +24,9 @@ export default function LogItem({ log }) {
     return (
         <Card
             className={cn('bg-slate-900/30', {
-                'bg-green-900/30': log.status > 200,
-                'bg-blue-900/30': log.status > 300,
-                'bg-red-900/30': log.status > 400,
+                'bg-green-900/30': log.status >= 200,
+                'bg-blue-900/30': log.status >= 300,
+                'bg-red-900/30': log.status >= 400,
             })}
         >
             <div className='flex flex-col gap-4'>
