@@ -1,3 +1,4 @@
+'use client';
 import { encode64 } from '@/helpers/crypt';
 
 export default function HtmlViewer({ content }) {
