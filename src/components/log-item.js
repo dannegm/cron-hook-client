@@ -46,15 +46,12 @@ export default function LogItem({ log }) {
                     </div>
                 </div>
 
-                <div>
+                <Collapsable title='Body' expanded>
                     <RenderContent type={log.contentType} content={log.response} />
-                </div>
+                </Collapsable>
 
                 <Collapsable title='Headers'>
                     <JsonViewer data={log.headers} expanded />
-                </Collapsable>
-                <Collapsable title='Params'>
-                    <JsonViewer data={log.params} expanded />
                 </Collapsable>
             </div>
         </Card>
