@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { Flex, Select, TextField, Tabs, Box, Button } from "@radix-ui/themes";
 import { Link2Icon } from "@radix-ui/react-icons";
 
+import { getMethodColor } from "@/helpers/utils";
+
 import ParamsEditor from "./params-editor";
 import CodeEditor from "./code-editor";
 
@@ -55,7 +57,12 @@ export default function RequestEditor({ onChange }) {
             <Flex gap="2">
                 {advancedMode && (
                     <Box maxWidth="200px">
-                        <Select.Root size="3" value={method} onValueChange={handleMethodChange}>
+                        <Select.Root
+                            size="3"
+                            value={method}
+                            color={getMethodColor(method)}
+                            onValueChange={handleMethodChange}
+                        >
                             <Select.Trigger />
                             <Select.Content>
                                 <Select.Item value="GET">GET</Select.Item>
