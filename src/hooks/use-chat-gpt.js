@@ -10,19 +10,17 @@ export default function useChatGpt({ prompt }) {
         setThinking(true);
         try {
             const resp = await chatGpetApi.post("/chat/completions", {
-                data: {
-                    model: "gpt-3.5-turbo",
-                    messages: [
-                        {
-                            role: "system",
-                            content: prompt,
-                        },
-                        {
-                            role: "user",
-                            content: message,
-                        },
-                    ],
-                },
+                model: "gpt-3.5-turbo",
+                messages: [
+                    {
+                        role: "system",
+                        content: prompt,
+                    },
+                    {
+                        role: "user",
+                        content: message,
+                    },
+                ],
             });
 
             const choices = resp.data?.choices[0];
