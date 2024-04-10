@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -7,9 +6,11 @@ import { ClockIcon, LightningBoltIcon } from '@radix-ui/react-icons';
 
 import usePatternGenerator from '@/hooks/use-pattern-generator';
 import useTeletype from '@/hooks/use-teletype';
+import { cn } from '@/helpers/utils';
 
 export default function PatternEditor({ onChange }) {
     const [pattern, thinking, fetchPattern] = usePatternGenerator();
+    const [message, setMessage] = useState('');
 
     const placeholder = useTeletype({
         texts: [
@@ -37,7 +38,6 @@ export default function PatternEditor({ onChange }) {
             'Cada 15 minutos',
         ],
     });
-    const [message, setMessage] = useState('');
 
     const handleFetchPattern = ev => {
         if (message !== '') {
@@ -58,7 +58,11 @@ export default function PatternEditor({ onChange }) {
     }, [pattern]);
 
     return (
-        <div className='flex flex-col gap-4 items-center rounded-md bg-white text-black p-4'>
+        <div
+            className={cn('flex flex-col gap-4 items-center rounded-md bg-white text-black p-4', {
+                'pb-6': !(pattern || thinking),
+            })}
+        >
             <Text size='4' weight='medium'>
                 ¿Cáda cuándo debe ejecutarse?
             </Text>

@@ -20,12 +20,7 @@ export default function ToggleCron({ id, active }) {
     return (
         <div className='inline-flex flex-row gap-2 items-center'>
             {loading && <Spinner />}
-            <Switch
-                className='cursor-pointer'
-                color='green'
-                checked={checked}
-                onCheckedChange={setActive}
-            />
+            <Switch color='green' checked={checked} onCheckedChange={setActive} />
         </div>
     );
 }

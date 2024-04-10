@@ -3,11 +3,13 @@ import { ClockIcon } from '@radix-ui/react-icons';
 
 import { formatDate } from '@/helpers/dates';
 import { getMethodColor } from '@/helpers/utils';
+
 import RequestViewer from './request-viewer';
 import ToggleCron from './toggle-cron';
 import FlushCronLogs from './flush-cron-logs';
 import DeleteCron from './delete-cron';
 import TriggerCron from './trigger-cron';
+import UrlItem from './url-item';
 
 export default function CronDetails({ cron }) {
     return (
@@ -36,7 +38,7 @@ export default function CronDetails({ cron }) {
                     <Badge color={getMethodColor(cron.method)} size='2'>
                         {cron.method}
                     </Badge>
-                    <Code>{cron.hook}</Code>
+                    <UrlItem url={cron.hook} />
                 </div>
 
                 <div className='flex flex-col md:flex-row gap-2 md:gap-8 justify-start'>

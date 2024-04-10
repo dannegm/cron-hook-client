@@ -3,14 +3,17 @@ import { useState } from 'react';
 import { Flex, Card, Button, Text, Em, Strong, Separator, Spinner } from '@radix-ui/themes';
 import { BookmarkFilledIcon } from '@radix-ui/react-icons';
 
+import cronHookApi from '@/services/cronHookApi';
+import { cn } from '@/helpers/utils';
+
 import RequestEditor from './request-editor';
 import PatternEditor from './pattern-editor';
-import cronHookApi from '@/services/cronHookApi';
 
 export default function CronEditor() {
     const [creating, setCreating] = useState(false);
     const [pattern, setPattern] = useState(null);
     const [request, setRequest] = useState(null);
+    const [focused, setFocused] = useState(false);
 
     const createCron = async data => {
         setCreating(true);
@@ -38,9 +41,16 @@ export default function CronEditor() {
     };
 
     return (
-        <Card>
-            <div className='flex flex-col gap-4 p-2'>
-                <PatternEditor onChange={val => setPattern(val)} />
+        <Card className='p-0'>
+            <div
+                className={cn('flex flex-col gap-4 p-0 transition-all', {
+                    'p-5': pattern?.pattern,
+                })}
+            >
+                <PatternEditor
+                    onChange={val => setPattern(val)}
+                />
+
                 {pattern?.pattern && (
                     <>
                         <Separator orientation='horizontal' size='4' />

@@ -10,3 +10,7 @@
     --vscode-editorGutter-background: #121221 !important;
     --vscode-editor-background: #0d0d1a !important;
 }
+
+button {
+    cursor: pointer !important;
+}

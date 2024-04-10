@@ -16,9 +16,9 @@ export default function JsonViewer({ data = {}, expanded }) {
                 theme={REACT_JSON_THEME}
                 style={REACT_JSON_STYLES}
                 collapsed={!expanded}
+                quotesOnKeys={false}
                 enableClipboard
                 displayObjectSize
-                quotesOnKeys={false}
             />
         </div>
     );

@@ -3,7 +3,9 @@ import { ClockIcon, EyeOpenIcon } from '@radix-ui/react-icons';
 
 import { formatDate } from '@/helpers/dates';
 import { getMethodColor } from '@/helpers/utils';
+
 import ToggleCron from './toggle-cron';
+import UrlItem from './url-item';
 
 export default function CronItem({ cron }) {
     return (
@@ -28,7 +30,7 @@ export default function CronItem({ cron }) {
                     <Badge color={getMethodColor(cron.method)} size='2'>
                         {cron.method}
                     </Badge>
-                    <Code>{cron.hook}</Code>
+                    <UrlItem url={cron.hook} />
                 </div>
 
                 <div className='flex flex-col md:flex-row gap-2 md:gap-8 justify-start'>
@@ -49,7 +51,7 @@ export default function CronItem({ cron }) {
 
                     <div className='flex flex-col md:self-end'>
                         <Link href={`/cron/${cron.id}`} className='w-full'>
-                            <Button variant='soft' className='cursor-pointer w-full' radius='full'>
+                            <Button variant='soft' className='w-full' radius='full'>
                                 <EyeOpenIcon />
                                 Watch Logs
                             </Button>
