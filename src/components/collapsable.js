@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 import { Card, Heading } from '@radix-ui/themes';
-import { ChevronDownIcon } from '@radix-ui/react-icons';
+import { ChevronUpIcon } from '@radix-ui/react-icons';
 
 import { cn } from '@/helpers/utils';
 
@@ -12,20 +12,26 @@ export default function Collapsable({ title, expanded, children }) {
     return (
         <Card>
             <div
-                className='flex flex-row justify-between items-center cursor-pointer'
+                className='flex flex-row justify-between items-center cursor-pointer max-h-60'
                 onClick={() => setCollapsed(c => !c)}
             >
                 <Heading size='2'>{title}</Heading>
-                <ChevronDownIcon
+                <ChevronUpIcon
                     width='20px'
                     height='20px'
                     className={cn('transition-transform', {
-                        'rotate-180': collapsed,
+                        'rotate-180': !collapsed,
                     })}
                 />
             </div>
 
-            {collapsed && <div className='mt-2'>{children}</div>}
+            <div
+                className={cn('grid grid-rows-[0fr] transition-all ease-in-out duration-300', {
+                    'grid-rows-[1fr] mt-2': collapsed,
+                })}
+            >
+                <div className='block overflow-hidden'>{children}</div>
+            </div>
         </Card>
     );
 }
