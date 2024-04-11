@@ -25,7 +25,7 @@ export default function CronDetails({ cron }) {
                             {cron.pattern}
                         </Code>
                         <Text className='text-xl'>
-                            <Em>{cron.patternDescription}</Em>
+                            <Em className='capitalize'>{cron.patternDescription}</Em>
                         </Text>
                     </div>
 

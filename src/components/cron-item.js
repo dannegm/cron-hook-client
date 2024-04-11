@@ -17,7 +17,7 @@ export default function CronItem({ cron }) {
                             {cron.pattern}
                         </Code>
                         <Text>
-                            <Em>{cron.patternDescription}</Em>
+                            <Em className='capitalize'>{cron.patternDescription}</Em>
                         </Text>
                     </div>
 

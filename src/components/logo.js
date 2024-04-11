@@ -14,13 +14,13 @@ export default function Logo({ className }) {
         <h1
             className={cn(
                 barlow.className,
-                'flex flex-row text-3xl uppercase antialiased tracking-tight text-white',
+                'flex flex-row text-3xl uppercase antialiased tracking-tight text-white no-underline',
                 className,
             )}
         >
             <Fire />
             <span>CRON</span>
-            <span className='text-red-500'>HOOK</span>
+            <span className='text-red-500 no-underline'>HOOK</span>
         </h1>
     );
 }

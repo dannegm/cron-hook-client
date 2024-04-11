@@ -21,7 +21,7 @@ export default async function Cron({ params: { id } }) {
         const { data: cronsData } = await cronHookApi.get(`/crons/${id}`);
 
         return (
-            <MainContainer>
+            <MainContainer classNames={{ container: 'pb-16' }}>
                 <MainHeader />
                 <CronDetails cron={cronsData.data} />
 

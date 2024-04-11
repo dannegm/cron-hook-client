@@ -5,7 +5,7 @@ import Logo from './logo';
 export default async function MainHeader() {
     return (
         <div className='flex flex-row gap-4 justify-center'>
-            <Link href='/'>
+            <Link className='no-underline' href='/'>
                 <Logo />
             </Link>
         </div>
