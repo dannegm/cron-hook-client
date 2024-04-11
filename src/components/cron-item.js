@@ -16,8 +16,8 @@ export default function CronItem({ cron }) {
                         <Code className='px-3 py-1 rounded-full' color='indigo' variant='outline'>
                             {cron.pattern}
                         </Code>
-                        <Text>
-                            <Em className='capitalize'>{cron.patternDescription}</Em>
+                        <Text className='first-letter:capitalize'>
+                            <Em>{cron.patternDescription}</Em>
                         </Text>
                     </div>
 

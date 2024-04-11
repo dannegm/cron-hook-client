@@ -1,7 +1,7 @@
 import { Badge, Card, Code } from '@radix-ui/themes';
 import { ClockIcon } from '@radix-ui/react-icons';
 
-import { formatDate } from '@/helpers/dates';
+import { formatTimestamp } from '@/helpers/dates';
 import { getStatusColor, cn } from '@/helpers/utils';
 
 import Collapsable from './collapsable';
@@ -41,7 +41,7 @@ export default function LogItem({ log }) {
                     <div>
                         <Code color='plum'>
                             <ClockIcon className='inline-block mr-2 -mt-1' />
-                            {formatDate(log.executedAt)}
+                            {formatTimestamp(log.executedAt)}
                         </Code>
                     </div>
                 </div>

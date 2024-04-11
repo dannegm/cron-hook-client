@@ -1,5 +1,5 @@
 'use client';
-import ReactJson from 'react-json-view';
+import ReactJson from '@microlink/react-json-view';
 
 const REACT_JSON_THEME = 'ocean';
 const REACT_JSON_STYLES = {
